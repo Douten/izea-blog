@@ -8,7 +8,9 @@
     <h3>
       Author: {{ this.user.name }}
     </h3>
-    <p>{{this.post.body}}</p>
+    {{#each this.fullText as |paragraph|}}
+    <p>{{paragraph}}</p>
+    {{/each}}
   </div>
   {{/if}}
 </article>
