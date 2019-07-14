@@ -1,13 +1,15 @@
 import Route from '@ember/routing/route';
-import { inject } from '@ember/service';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
-  ajax: inject(),
+  ajax: service(),
+  location: 9,
   model() {
-    const posts = this.get('ajax')
-      .request('https://jsonplaceholder.typicode.com/posts')
-      //randomize
-      .then(response => response.sort(() => Math.random() - 0.5));
-    return posts;
+    return (
+      this.get('ajax')
+        .request('https://jsonplaceholder.typicode.com/posts')
+        //randomize
+        .then(response => response.sort(() => Math.random() - 0.5))
+    );
   }
 });

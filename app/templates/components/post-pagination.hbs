@@ -1,0 +1,9 @@
+{{yield paginatedItems}}
+
+{{#if showPrev}}
+<button {{action "prevPage"}}>Previous</button>
+{{/if}}
+
+{{#if showNext}}
+<button {{action "nextPage"}}>Next</button>
+{{/if}}
