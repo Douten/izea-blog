@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   page: 1,
-  paginateBy: 10,
+  paginateBy: 20,
   maxPage: computed('page', function() {
     // length / pagination (+1 if leftover)
     let pageCount = Math.floor(this.items.length / this.paginateBy);
@@ -14,9 +14,9 @@ export default Component.extend({
   }),
   paginatedItems: computed('page', function() {
     const items = this.items;
-    const start = this.page * this.paginateBy - this.paginateBy;
+    // const start = this.page * this.paginateBy - this.paginateBy;
     const end = this.page * this.paginateBy - 1;
-    return items.slice(start, end);
+    return items.slice(0, end);
   }),
   showNext: computed('page', function() {
     return this.page < this.maxPage;
@@ -27,9 +27,9 @@ export default Component.extend({
   actions: {
     nextPage() {
       this.set('page', this.get('page') + 1);
-    },
-    prevPage() {
-      this.set('page', this.get('page') - 1);
-    }
+    } //,
+    // prevPage() {
+    //   this.set('page', this.get('page') - 1);
+    // }
   }
 });

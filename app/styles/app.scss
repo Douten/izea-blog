@@ -1,0 +1,26 @@
+@import 'normalize';
+a {
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.info {
+  min-width: 30%;
+  position: relative;
+  .wrapper {
+    position: fixed;
+    top: 30%;
+  }
+}
+
+.posts {
+  width: 60%;
+}

@@ -1,7 +1,16 @@
-<h1>Blog</h1>
-
-{{#post-pagination items=this.model as |posts|}}
-{{#each posts as |post|}}
-<Post @post={{post}} />
-{{/each}}
-{{/post-pagination}}
+<div class="container">
+  <aside class="info">
+    <div class="wrapper">
+      <span>Blog</span>
+      <h1>IZEA Interview Project</h1>
+      <a href="">follow me on GH</a>
+    </div>
+  </aside>
+  <section class="posts">
+    {{#post-pagination items=this.model as |posts|}}
+    {{#each posts as |post|}}
+    <Post @post={{post}} />
+    {{/each}}
+    {{/post-pagination}}
+  </section>
+</div>
