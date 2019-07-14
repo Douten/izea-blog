@@ -1,0 +1,14 @@
+{{outlet}}
+<h1>Test</h1>
+
+{{#each this.model as |post|}}
+<article class="listing">
+  <h3>{{post.title}}</h3>
+  <div class="detail owner">
+    <span>Owner:</span> {{post.userId}}
+  </div>
+  <div class="detail bedrooms">
+    <span>Text:</span> {{post.body}}
+  </div>
+</article>
+{{/each}}
