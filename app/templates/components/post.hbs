@@ -5,9 +5,10 @@
 
   {{#if showBody}}
   <div class="full post">
-    <h3>
-      Author: {{ this.user.name }}
+    <h3 class="author">
+      {{ this.user.name }}
     </h3>
+    <img src="https://picsum.photos/id/{{this.post.id}}/{{this.imgSize}}" />
     {{#each this.fullText as |paragraph|}}
     <p>{{paragraph}}</p>
     {{/each}}

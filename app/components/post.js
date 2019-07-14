@@ -7,6 +7,7 @@ export default Component.extend({
   ajax: service(),
   user: null,
   fullText: null,
+  imgSize: null,
   actions: {
     show() {
       this.toggleProperty('showBody');
@@ -20,6 +21,7 @@ export default Component.extend({
         this.set('user', response.find(user => this.post.userId === user.id))
       );
 
+    //generate lorem ipsum from npm lorem-ipsum
     const lorem = new LoremIpsum({
       sentencesPerParagraph: {
         max: 8,
@@ -38,5 +40,9 @@ export default Component.extend({
     }
 
     this.fullText = text;
+
+    //random image size
+
+    this.imgSize = Math.random() < 0.5 ? '200/300' : '300/200';
   }
 });
