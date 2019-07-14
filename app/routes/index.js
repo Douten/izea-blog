@@ -6,7 +6,7 @@ export default Route.extend({
   location: 9,
   model() {
     return (
-      this.get('ajax')
+      this.ajax
         .request('https://jsonplaceholder.typicode.com/posts')
         //randomize
         .then(response => response.sort(() => Math.random() - 0.5))

@@ -1,9 +1,15 @@
 <article class="listing">
-  <h3>{{this.post.title}}</h3>
-  <div class="detail owner">
-    <span>Owner:</span> {{this.post.userId}}
-  </div>
+  <a onclick={{action "show"}}>
+    <h2>{{this.post.title}}</h2>
+    <div class="author">
+      <span>By:</span> {{this.post.userId}}
+    </div>
+  </a>
+
+  {{#if showBody}}
   <div class="detail bedrooms">
+    Author: {{ this.user.name }}
     <span>Text:</span> {{this.post.body}}
   </div>
+  {{/if}}
 </article>
