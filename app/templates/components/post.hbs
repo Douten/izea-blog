@@ -1,17 +1,28 @@
-<article class="listing">
+<article class="post {{if this.showBody "extended"}}">
   <a onclick={{action "show"}}>
-    <h2>{{this.post.title}}</h2>
+    <h2 class="title">{{this.post.title}}</h2>
+    {{#unless showBody}}
+    <p class="preview">{{this.post.body}}</p>
+    {{/unless}}
   </a>
 
   {{#if showBody}}
-  <div class="full post">
+  <div class="content">
     <h3 class="author">
-      {{ this.user.name }}
+      by {{ this.user.name }}
     </h3>
-    <img src="https://picsum.photos/id/{{this.post.id}}/{{this.imgSize}}" />
+    <img src="https://picsum.photos/id/{{this.post.id}}/650/300" />
     {{#each this.fullText as |paragraph|}}
     <p>{{paragraph}}</p>
     {{/each}}
+    <div class="bio">
+      <img src="https://avatars.dicebear.com/v2/avataaars/{{this.user.id}}.svg" />
+      <div>
+        <span class="name">{{this.user.name}}</span>
+        <span class="handle">@{{this.user.username}}</span>
+        <span class="quote">{{this.user.company.catchPhrase}}</span>
+      </div>
+    </div>
   </div>
   {{/if}}
 </article>

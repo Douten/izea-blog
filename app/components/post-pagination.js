@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   page: 1,
-  paginateBy: 20,
+  paginateBy: 15,
   maxPage: computed('page', function() {
     // length / pagination (+1 if leftover)
     let pageCount = Math.floor(this.items.length / this.paginateBy);

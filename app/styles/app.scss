@@ -1,27 +1,208 @@
 @import 'normalize';
+@import url('https://fonts.googleapis.com/css?family=Raleway:200|Literata:400,600|Nunito+Sans:300|Nunito:600&display=swap');
+
+::selection {
+  background-color: #e94e77;
+  color: #fff;
+}
+
 a {
   cursor: pointer;
 }
 
+img {
+  width: 100%;
+}
+
+h1 {
+  font-size: 2em;
+  max-width: 10em;
+  span {
+    text-transform: uppercase;
+  }
+}
 h2 {
-  font-size: 3em;
+  font-size: 2.5em;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+p {
+  font-size: 1.35em;
+  line-height: 1.5em;
+  font-family: 'Literata', serif;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #424242;
+  background: #25262b;
 }
 
 .container {
   display: flex;
   justify-content: flex-end;
   padding: 0 3em;
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  &::after {
+    content: '';
+    display: block;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    height: 13%;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+  }
 }
 
 .info {
   min-width: 30%;
   position: relative;
+  z-index: 3;
+  color: #f2ede3;
+  font-family: 'Raleway', serif;
+  .title {
+    font-family: 'Literata', serif;
+    font-size: 8em;
+    span,
+    span::selection {
+      color: #25262b;
+    }
+  }
+  .gh-link {
+    svg {
+      width: 1.25em;
+      height: 1.25em;
+      fill: #f2ede3;
+      position: absolute;
+      // yes, I'm picky
+      top: 6.98em;
+      right: 0.7em;
+    }
+  }
+  h1 {
+    font-size: 1em;
+    width: 5em;
+    margin: 0.2em 0 0 0.5em;
+    letter-spacing: 0.75ch;
+    line-height: 1.85em;
+  }
   .wrapper {
     position: fixed;
-    top: 30%;
+    top: 28%;
   }
 }
 
 .posts {
   width: 60%;
+  position: relative;
+  z-index: 3;
+}
+
+.post {
+  background: #fefff8;
+  padding: 3em 3em 3em 2em;
+  margin: 0.5em 0;
+  border-radius: 0.15em;
+
+  &.extended {
+    background: #fff;
+  }
+
+  &:hover {
+    background: #fff;
+  }
+
+  .preview {
+    margin-top: 1.25em;
+    font-size: 0.9em;
+  }
+
+  .author {
+    color: #c8c8c8;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    margin: 1.5em auto 2.5em;
+    letter-spacing: 0.25ch;
+  }
+
+  .bio {
+    display: flex;
+    border-top: 1px solid #c8c8c8;
+    padding-top: 3em;
+    margin: 3em auto 0 auto;
+    justify-content: center;
+    width: 65%;
+    img {
+      width: 75px;
+      height: 75px;
+      border-radius: 50px;
+      background: #c6e5d9;
+    }
+    div {
+      margin-left: 1em;
+    }
+    .name,
+    .handle,
+    .quote {
+      display: block;
+      margin: 0.25em;
+      color: #c6a49a;
+      margin-left: 0;
+    }
+    .name {
+      font-size: 1.3em;
+      margin-bottom: 0.2em;
+      color: #e94e77;
+    }
+    .handle {
+      font-size: 1em;
+    }
+    .quote {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.more {
+  width: 50%;
+  padding: 2em;
+  border: 0;
+  background: white;
+  cursor: pointer;
+  font-family: Literata;
+  margin: 0 auto;
+  display: block;
+
+  &:hover {
+    .arrow-down {
+      animation: bounce 0.8s cubic-bezier(0.76, 0, 1, 0.08) 0s infinite
+        alternate both;
+    }
+  }
+
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(1em);
+    }
+  }
+
+  .arrow-down {
+    display: block;
+    margin: 0.5em auto 0;
+    width: 30px;
+    height: 30px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMzAiIGhlaWdodD0iMzAiCnZpZXdCb3g9IjAgMCA1MCA1MCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48ZyBpZD0ic3VyZmFjZTEiPjxwYXRoIHN0eWxlPSIgIiBkPSJNIDI0Ljk4NDM3NSAwLjk4NDM3NSBDIDI0LjQzMzU5NCAwLjk5NjA5NCAyMy45OTIxODggMS40NDkyMTkgMjQgMiBMIDI0IDQ1LjI1MzkwNiBMIDE1LjY5MTQwNiAzNy4yODEyNSBDIDE1LjUgMzcuMDg5ODQ0IDE1LjIzODI4MSAzNi45ODQzNzUgMTQuOTY4NzUgMzYuOTg4MjgxIEMgMTQuNTYyNSAzNyAxNC4xOTkyMTkgMzcuMjUzOTA2IDE0LjA1NDY4OCAzNy42MzI4MTMgQyAxMy45MTAxNTYgMzguMDExNzE5IDE0LjAwNzgxMyAzOC40NDE0MDYgMTQuMzA4NTk0IDM4LjcxODc1IEwgMjUgNDguOTg0Mzc1IEwgMzUuNjkxNDA2IDM4LjcxODc1IEMgMzUuOTUzMTI1IDM4LjQ3MjY1NiAzNi4wNjI1IDM4LjEwNTQ2OSAzNS45NzY1NjMgMzcuNzU3ODEzIEMgMzUuODkwNjI1IDM3LjQxMDE1NiAzNS42MjUgMzcuMTMyODEzIDM1LjI4MTI1IDM3LjAzNTE1NiBDIDM0LjkzMzU5NCAzNi45MzM1OTQgMzQuNTYyNSAzNy4wMjczNDQgMzQuMzA4NTk0IDM3LjI4MTI1IEwgMjYgNDUuMjUzOTA2IEwgMjYgMiBDIDI2LjAwMzkwNiAxLjczMDQ2OSAyNS44OTg0MzggMS40Njg3NSAyNS43MDcwMzEgMS4yNzczNDQgQyAyNS41MTU2MjUgMS4wODU5MzggMjUuMjUzOTA2IDAuOTgwNDY5IDI0Ljk4NDM3NSAwLjk4NDM3NSBaICI+PC9wYXRoPjwvZz48L3N2Zz4')
+      50% 50% no-repeat;
+    background-size: 100%;
+  }
 }
