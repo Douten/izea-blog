@@ -340,7 +340,6 @@ body {
   fill: #fff;
   background: none;
   @include respond-to(lg-screen) {
-    background: white;
     color: #424242;
     fill: #424242;
   }

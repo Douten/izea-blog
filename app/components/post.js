@@ -21,6 +21,14 @@ export default Component.extend({
         this.set('user', response.find(user => this.post.userId === user.id))
       );
 
+    //sometimes picsum url 404
+    let picId = this.post.id;
+    if (this.post.id == 97 || this.post.id == 86) {
+      picId = picId + 100;
+    }
+    //preload images
+    new Image().src = `https://picsum.photos/id/${picId}/650/300`;
+
     //generate lorem ipsum from npm lorem-ipsum
     const lorem = new LoremIpsum({
       sentencesPerParagraph: {
