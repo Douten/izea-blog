@@ -1,6 +1,40 @@
 @import 'normalize';
 @import url('https://fonts.googleapis.com/css?family=Raleway:200|Literata:400,600|Nunito+Sans:300|Nunito:600&display=swap');
 
+$xs: 320px;
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+
+@mixin respond-to($size) {
+  @if $size == xs-screen {
+    @media only screen and (min-width: $xs) {
+      @content;
+    }
+  }
+  @if $size == sm-screen {
+    @media only screen and (min-width: $sm) {
+      @content;
+    }
+  }
+  @if $size == md-screen {
+    @media only screen and (min-width: $md) {
+      @content;
+    }
+  }
+  @if $size == lg-screen {
+    @media only screen and (min-width: $lg) {
+      @content;
+    }
+  }
+  @if $size == xl-screen {
+    @media only screen and (min-width: $xl) {
+      @content;
+    }
+  }
+}
+
 ::selection {
   background-color: #e94e77;
   color: #fff;
@@ -10,10 +44,6 @@ a {
   cursor: pointer;
 }
 
-img {
-  width: 100%;
-}
-
 h1 {
   font-size: 2em;
   max-width: 10em;
@@ -21,14 +51,12 @@ h1 {
     text-transform: uppercase;
   }
 }
-h2 {
-  font-size: 2.5em;
-  margin: 0;
-  text-transform: capitalize;
-}
 
 p {
-  font-size: 1.35em;
+  font-size: 1.15em;
+  @include respond-to(md-screen) {
+    font-size: 1.35em;
+  }
   line-height: 1.5em;
   font-family: 'Literata', serif;
 }
@@ -41,8 +69,15 @@ body {
 
 .container {
   display: flex;
-  justify-content: flex-end;
-  padding: 0 3em;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include respond-to(md-screen) {
+    flex-wrap: no-wrap;
+    justify-content: flex-end;
+  }
+  @include respond-to(sm-screen) {
+    padding: 0 3em;
+  }
   position: relative;
   z-index: 1;
   max-width: 1280px;
@@ -54,6 +89,7 @@ body {
     position: fixed;
     z-index: 2;
     width: 100%;
+    min-height: 11.8em;
     height: 13%;
     left: 0;
     bottom: 0;
@@ -62,14 +98,17 @@ body {
 }
 
 .info {
-  min-width: 30%;
+  min-width: 40%;
   position: relative;
   z-index: 3;
   color: #f2ede3;
   font-family: 'Raleway', serif;
   .title {
     font-family: 'Literata', serif;
-    font-size: 8em;
+    font-size: 5em;
+    @include respond-to(xs-screen) {
+      font-size: 8em;
+    }
     span,
     span::selection {
       color: #25262b;
@@ -80,10 +119,14 @@ body {
       width: 1.25em;
       height: 1.25em;
       fill: #f2ede3;
-      position: absolute;
+      position: relative;
+      display: none;
       // yes, I'm picky
-      top: 6.98em;
-      right: 0.7em;
+      top: 0.15em;
+      right: 2.2em;
+      @include respond-to(xs-screen) {
+        display: initial;
+      }
     }
   }
   h1 {
@@ -94,22 +137,35 @@ body {
     line-height: 1.85em;
   }
   .wrapper {
-    position: fixed;
-    top: 28%;
+    @include respond-to(lg-screen) {
+      margin-top: 28%;
+    }
   }
 }
 
 .posts {
-  width: 60%;
+  width: 100%;
+  @include respond-to(md-screen) {
+    width: 90%;
+  }
+  @include respond-to(lg-screen) {
+    width: 60%;
+  }
   position: relative;
   z-index: 3;
 }
 
 .post {
   background: #fefff8;
-  padding: 3em 3em 3em 2em;
-  margin: 0.5em 0;
-  border-radius: 0.15em;
+  padding: 2em 1em;
+  margin: 1em 0;
+  @include respond-to(sm-screen) {
+    padding: 3em 3em 3em 2em;
+  }
+  @include respond-to(md-screen) {
+    border-radius: 0.15em;
+    margin: 0.5em 0;
+  }
 
   &.extended {
     background: #fff;
@@ -117,6 +173,24 @@ body {
 
   &:hover {
     background: #fff;
+  }
+
+  img {
+    width: 100vw;
+    margin-left: -1em;
+    @include respond-to(sm-screen) {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  h2 {
+    font-size: 1.5em;
+    @include respond-to(md-screen) {
+      font-size: 2.5em;
+    }
+    margin: 0;
+    text-transform: capitalize;
   }
 
   .preview {
@@ -135,10 +209,15 @@ body {
   .bio {
     display: flex;
     border-top: 1px solid #c8c8c8;
-    padding-top: 3em;
-    margin: 3em auto 0 auto;
+    padding-top: 2em;
+    margin: 2em auto 0 auto;
     justify-content: center;
-    width: 65%;
+    width: 100%;
+    @include respond-to(md-screen) {
+      padding-top: 3em;
+      margin-top: 3em;
+      width: 65%;
+    }
     img {
       width: 75px;
       height: 75px;
