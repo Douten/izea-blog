@@ -4,7 +4,7 @@ a small ember app made as part of an interview with [IZEA](https://izea.com/).
 
 # features.
 
-- ember-animated
+- animations
 - jsonplaceholder
 - lorem-ipsum
 - picsum
