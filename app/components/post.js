@@ -11,6 +11,7 @@ export default Component.extend({
   picId: null,
   actions: {
     show() {
+      if (this.showBody) window.location.href = `#${this.elementId}`;
       this.toggleProperty('showBody');
     }
   },
