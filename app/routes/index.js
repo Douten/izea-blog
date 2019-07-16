@@ -13,11 +13,11 @@ export default Route.extend({
           const style = `background: #25262b; color: #f2ede3; font: 20px/40px 'Literata', serif; padding: 15px; margin: 0; border 0;`;
 
           console.log(
-            `%cThank you for the opportunity to let me show what I know.`,
+            `%cI appreciate the opportunity for me to demonstrate my abilities, thank you.`,
             style
           );
           console.log(
-            `%cThere is still a lot for me to learn, but I hope what is there is good.`,
+            `%cThere is still a lot for me to learn, but I think you'll like what you see here.`,
             style
           );
           console.log(`%cIf you have any critiques please let me know!`, style);
