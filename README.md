@@ -1,8 +1,8 @@
-# [📓blog.](https://douten.github.io/izea-blog)
+# [blog.](https://douten.github.io/izea-blog)
 
-a small ember app made as part of an interview with [IZEA](https://izea.com/).
+📓 a small ember app made as part of an interview with [IZEA](https://izea.com/).
 
-# features.
+## features.
 
 - animations
 - preload images
