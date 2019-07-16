@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'izea-blog',
     environment,
-    rootURL: 'https://douten.github.io/izea-blog/',
+    rootURL: '/izea-blog',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
