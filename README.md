@@ -1,4 +1,4 @@
-# blog.
+# [📓blog.](https://douten.github.io/izea-blog)
 
 a small ember app made as part of an interview with [IZEA](https://izea.com/).
 
@@ -17,5 +17,4 @@ a small ember app made as part of an interview with [IZEA](https://izea.com/).
 - `cd izea-blog`
 - `npm install`
 - `ember serve`
-- Visit your app at [http://localhost:4200](http://localhost:4200).
-- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+- Visit your app at [http://localhost:4200/izea-blog](http://localhost:4200/izea-blog)
