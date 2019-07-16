@@ -210,7 +210,7 @@ body {
 }
 
 .post {
-  background: #fefff8;
+  background: rgba(254, 255, 248, .86);
   padding: 2em 1em;
   margin: 1em 0;
   overflow: hidden;
@@ -221,6 +221,13 @@ body {
   }
   @include respond-to(md-screen) {
     margin: 0.5em 0;
+  }
+
+  &.un-read{
+    h2{
+      font-weight: bold;
+    }
+    background: #fefff8;
   }
 
   &.extended {
@@ -244,7 +251,7 @@ body {
   }
 
   h2 {
-    font-size: 1.5em;
+    font: 1.5em/1.2em 'Literata', serif;
     @include respond-to(md-screen) {
       font-size: 2.5em;
     }

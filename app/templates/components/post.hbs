@@ -1,8 +1,11 @@
-<article data-test-post class="post {{if this.showBody "extended"}}">
+<article data-test-post class="post {{if this.showBody "extended"}} {{if this.unRead "un-read"}}">
   <a onclick={{action "show"}} data-test-link>
     <h2 class="title" data-test-post-title>{{this.post.title}}</h2>
     {{#unless showBody}}
       <p class="preview" data-test-post-body>{{this.post.body}}</p>
+      {{#unless this.unRead}}
+        (read)
+      {{/unless}}
     {{/unless}}
   </a>
 
@@ -24,7 +27,7 @@
         </div>
       </div>
       <div class="close">
-        <a onclick={{action "show"}}>X</a>
+        <a onclick={{action "show" "close"}}>X</a>
       </div>
     </div>
   {{/if}}

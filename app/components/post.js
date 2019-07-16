@@ -8,10 +8,37 @@ export default Component.extend({
   user: null,
   fullText: null,
   picId: null,
+  posY: null,
+  unRead: true,
   actions: {
-    show() {
-      //if it's opened (closing) then scroll up
-      if(this.showBody) window.scrollTo(0, document.querySelector(`#${this.elementId}`).offsetTop);
+    show(from) {
+      if (this.showBody && from == 'close') {
+        //don't scroll if closing from title
+        //if it's opened (closing) then scroll up
+        this.set('unRead', false);
+        //offsetTop (gets *current* el to top of page) 
+        // minus (because scrolling up)
+        //posY (how far down el *previously* was on canvas)
+        //gives original location, no matter how many other elements have expanded.
+        let scrollY = document.querySelector(`#${this.elementId}`).offsetTop - this.posY;
+        //if it's too far above, reset to top
+        if (scrollY > document.querySelector(`#${this.elementId}`).offsetTop){
+          scrollY = document.querySelector(`#${this.elementId}`).offsetTop - 20;
+        }
+
+        console.log(scrollY);
+        window.scrollTo({
+          top: scrollY,
+          behavior: 'smooth'
+        });
+      } else {
+        //store y compared to canvas.
+        this.posY = document
+          .querySelector(`#${this.elementId}`)
+          .getBoundingClientRect().y;
+        console.log(this.posY)
+      }
+
       this.toggleProperty('showBody');
     }
   },
