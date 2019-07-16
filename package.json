@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "description": "Sample blog page for Izea",
-  "repository": "",
+  "repository": "https://github.com/Douten/izea-blog",
   "license": "MIT",
   "author": "Minh Nguyen",
   "directories": {
