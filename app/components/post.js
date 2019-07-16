@@ -7,11 +7,10 @@ export default Component.extend({
   ajax: service(),
   user: null,
   fullText: null,
-  imgSize: null,
   picId: null,
   actions: {
     show() {
-      //if it's open (closing) jump scroll up
+      //if it's opened (closing) then scroll up
       if(this.showBody) window.scrollTo(0, document.querySelector(`#${this.elementId}`).offsetTop);
       this.toggleProperty('showBody');
     }
@@ -52,9 +51,5 @@ export default Component.extend({
     }
 
     this.fullText = text;
-
-    //random image size
-
-    this.imgSize = Math.random() < 0.5 ? '200/300' : '300/200';
   }
 });
