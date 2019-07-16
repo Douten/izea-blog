@@ -213,8 +213,10 @@ body {
   background: #fefff8;
   padding: 2em 1em;
   margin: 1em 0;
+  overflow: hidden;
+
   @include respond-to(sm-screen) {
-    padding: 3em 3em 3em 2em;
+    padding: 3em 2em;
     border-radius: 0.15em;
   }
   @include respond-to(md-screen) {
@@ -233,6 +235,9 @@ body {
     width: 100vw;
     margin-left: -1em;
     @include respond-to(sm-screen) {
+      margin-left: -2em;
+    }
+    @include respond-to(md-screen) {
       margin: 0;
       width: 100%;
     }
@@ -254,7 +259,6 @@ body {
   }
 
   .content {
-    overflow: hidden;
     animation: growIn 0.25s ease-in;
   }
 
