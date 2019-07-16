@@ -15,9 +15,9 @@
   </aside>
   <section class="posts" data-test-blog-posts>
     {{#post-pagination items=this.model as |posts|}}
-    {{#each posts as |post|}}
-    <Post @post={{post}} />
-    {{/each}}
+      {{#each posts as |post|}}
+        <Post @post={{post}} />
+      {{/each}}
     {{/post-pagination}}
   </section>
 </div>

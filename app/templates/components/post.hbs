@@ -2,30 +2,30 @@
   <a onclick={{action "show"}} data-test-link>
     <h2 class="title" data-test-post-title>{{this.post.title}}</h2>
     {{#unless showBody}}
-    <p class="preview" data-test-post-body>{{this.post.body}}</p>
+      <p class="preview" data-test-post-body>{{this.post.body}}</p>
     {{/unless}}
   </a>
 
   {{#if showBody}}
-  <div class="content" data-test-full-post>
-    <h3 class="author">
-      by {{ this.user.name }}
-    </h3>
-    <img src="https://picsum.photos/id/{{this.picId}}/650/300" />
-    {{#each this.fullText as |paragraph|}}
-    <p>{{paragraph}}</p>
-    {{/each}}
-    <div class="bio">
-      <img src="https://avatars.dicebear.com/v2/avataaars/{{this.user.id}}.svg" />
-      <div>
-        <span class="name">{{this.user.name}}</span>
-        <span class="handle">@{{this.user.username}}</span>
-        <span class="quote">{{this.user.company.catchPhrase}}</span>
+    <div class="content" data-test-full-post>
+      <h3 class="author">
+        by {{ this.user.name }}
+      </h3>
+      <img src="https://picsum.photos/id/{{this.picId}}/650/300" alt="blog photo">
+      {{#each this.fullText as |paragraph|}}
+        <p>{{paragraph}}</p>
+      {{/each}}
+      <div class="bio">
+        <img src="https://avatars.dicebear.com/v2/avataaars/{{this.user.id}}.svg" alt="profile photo">
+        <div>
+          <span class="name">{{this.user.name}}</span>
+          <span class="handle">@{{this.user.username}}</span>
+          <span class="quote">{{this.user.company.catchPhrase}}</span>
+        </div>
+      </div>
+      <div class="close">
+        <a onclick={{action "show"}}>X</a>
       </div>
     </div>
-    <div class="close">
-      <a onclick={{action "show"}}>X</a>
-    </div>
-  </div>
   {{/if}}
 </article>

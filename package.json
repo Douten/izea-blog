@@ -5,7 +5,7 @@
   "description": "Sample blog page for Izea",
   "repository": "",
   "license": "MIT",
-  "author": "",
+  "author": "Minh Nguyen",
   "directories": {
     "doc": "doc",
     "test": "tests"
