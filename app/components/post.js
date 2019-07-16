@@ -11,7 +11,8 @@ export default Component.extend({
   picId: null,
   actions: {
     show() {
-      if (this.showBody) window.location.href = `#${this.elementId}`;
+      //if it's open (closing) jump scroll up
+      if(this.showBody) window.scrollTo(0, document.querySelector(`#${this.elementId}`).offsetTop);
       this.toggleProperty('showBody');
     }
   },
