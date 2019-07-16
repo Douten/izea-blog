@@ -8,6 +8,7 @@ export default Component.extend({
   user: null,
   fullText: null,
   imgSize: null,
+  picId: null,
   actions: {
     show() {
       this.toggleProperty('showBody');
@@ -26,6 +27,7 @@ export default Component.extend({
     if (this.post.id == 97 || this.post.id == 86) {
       picId = picId + 100;
     }
+    this.picId = picId;
     //preload images
     new Image().src = `https://picsum.photos/id/${picId}/650/300`;
 

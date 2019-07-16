@@ -1,17 +1,17 @@
-<article class="post {{if this.showBody "extended"}}">
-  <a onclick={{action "show"}}>
-    <h2 class="title">{{this.post.title}}</h2>
+<article data-test-post class="post {{if this.showBody "extended"}}">
+  <a onclick={{action "show"}} data-test-link>
+    <h2 class="title" data-test-post-title>{{this.post.title}}</h2>
     {{#unless showBody}}
-    <p class="preview">{{this.post.body}}</p>
+    <p class="preview" data-test-post-body>{{this.post.body}}</p>
     {{/unless}}
   </a>
 
   {{#if showBody}}
-  <div class="content">
+  <div class="content" data-test-full-post>
     <h3 class="author">
       by {{ this.user.name }}
     </h3>
-    <img src="https://picsum.photos/id/{{this.post.id}}/650/300" />
+    <img src="https://picsum.photos/id/{{this.picId}}/650/300" />
     {{#each this.fullText as |paragraph|}}
     <p>{{paragraph}}</p>
     {{/each}}

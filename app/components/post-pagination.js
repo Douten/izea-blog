@@ -15,7 +15,7 @@ export default Component.extend({
   paginatedItems: computed('page', function() {
     const items = this.items;
     // const start = this.page * this.paginateBy - this.paginateBy;
-    const end = this.page * this.paginateBy - 1;
+    const end = this.page * this.paginateBy;
     return items.slice(0, end);
   }),
   showNext: computed('page', function() {

@@ -13,7 +13,7 @@
       <h1>IZEA <span>Interview Project</span></h1>
     </div>
   </aside>
-  <section class="posts">
+  <section class="posts" data-test-blog-posts>
     {{#post-pagination items=this.model as |posts|}}
     {{#each posts as |post|}}
     <Post @post={{post}} />

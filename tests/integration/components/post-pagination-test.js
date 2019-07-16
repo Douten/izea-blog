@@ -1,26 +1,25 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { setupApplicationTest } from 'ember-qunit';
+import { visit, click } from '@ember/test-helpers';
 
 module('Integration | Component | post-pagination', function(hooks) {
-  setupRenderingTest(hooks);
+  setupApplicationTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
+  test('should load more posts on button click', async function(assert) {
+    await visit('/');
+    assert.equal(
+      this.element.querySelectorAll('[data-test-post]').length,
+      15,
+      'should display 15 posts'
+    );
 
-    await render(hbs`<PostPagination />`);
+    await click('[data-test-more-button]');
 
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <PostPagination>
-        template block text
-      </PostPagination>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(
+      this.element.querySelectorAll('[data-test-post]').length,
+      30,
+      'should display 30 posts after button click'
+    );
+    
   });
 });
