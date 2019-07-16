@@ -9,7 +9,10 @@ export default Route.extend({
       this.ajax
         .request('https://jsonplaceholder.typicode.com/posts')
         //randomize
-        .then(response => response.sort(() => Math.random() - 0.5))
+        .then(response => {
+          console.log(response);
+          return response.sort(() => Math.random() - 0.5);
+        })
     );
   }
 });
