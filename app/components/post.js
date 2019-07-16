@@ -16,17 +16,22 @@ export default Component.extend({
         //don't scroll if closing from title
         //if it's opened (closing) then scroll up
         this.set('unRead', false);
-        //offsetTop (gets *current* el to top of page) 
+
+        //.posts for in mobile when logo is stacked on top
+        const top =
+          document.querySelector(`#${this.elementId}`).offsetTop +
+          document.querySelector(`.posts`).offsetTop;
+
+        //offsetTop (gets *current* el to top of page)
         // minus (because scrolling up)
         //posY (how far down el *previously* was on canvas)
         //gives original location, no matter how many other elements have expanded.
-        let scrollY = document.querySelector(`#${this.elementId}`).offsetTop - this.posY;
+        let scrollY = top - this.posY;
         //if it's too far above, reset to top
-        if (scrollY > document.querySelector(`#${this.elementId}`).offsetTop){
-          scrollY = document.querySelector(`#${this.elementId}`).offsetTop - 20;
+        if (scrollY > top) {
+          scrollY = top - 20;
         }
 
-        console.log(scrollY);
         window.scrollTo({
           top: scrollY,
           behavior: 'smooth'
@@ -36,7 +41,6 @@ export default Component.extend({
         this.posY = document
           .querySelector(`#${this.elementId}`)
           .getBoundingClientRect().y;
-        console.log(this.posY)
       }
 
       this.toggleProperty('showBody');
