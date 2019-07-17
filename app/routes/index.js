@@ -13,7 +13,7 @@ export default Route.extend({
           const style = `background: #25262b; color: #f2ede3; font: 20px/40px 'Literata', serif; padding: 15px; margin: 0; border 0;`;
 
           console.log(
-            `%cI appreciate the opportunity for me to demonstrate my abilities.`,
+            `%cI appreciate the opportunity for me to demonstrate my skills.`,
             style
           );
           console.log(
