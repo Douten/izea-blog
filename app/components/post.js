@@ -9,38 +9,51 @@ export default Component.extend({
   fullText: null,
   picId: null,
   posY: null,
+  scrollPos: null,
   unRead: true,
   actions: {
     show(from) {
-      if (this.showBody && from == 'close') {
+      //.posts for in mobile when logo is stacked on top
+      const top =
+        document.querySelector(`#${this.elementId}`).offsetTop +
+        document.querySelector(`.posts`).offsetTop;
+
+      if (this.showBody && from === 'close') {
         //don't scroll if closing from title
         //if it's opened (closing) then scroll up
         this.set('unRead', false);
-
-        //.posts for in mobile when logo is stacked on top
-        const top =
-          document.querySelector(`#${this.elementId}`).offsetTop +
-          document.querySelector(`.posts`).offsetTop;
 
         //offsetTop (gets *current* el to top of page)
         // minus (because scrolling up)
         //posY (how far down el *previously* was on canvas)
         //gives original location, no matter how many other elements have expanded.
-        let scrollY = top - this.posY;
+        let pos = top - this.posY;
         //if it's too far above, reset to top
-        if (scrollY > top) {
-          scrollY = top - 20;
+        if (pos > top) {
+          pos = top - 20;
         }
+        setTimeout(() => {
+          window.scrollTo({
+            top: pos,
+            behavior: 'smooth'
+          });
+        }, 50);
 
-        window.scrollTo({
-          top: scrollY,
-          behavior: 'smooth'
-        });
       } else {
         //store y compared to canvas.
         this.posY = document
           .querySelector(`#${this.elementId}`)
           .getBoundingClientRect().y;
+
+        //since cliking on title implies wanting to read
+        if (!this.showBody) {
+          setTimeout(() => {
+            window.scrollTo({
+              top: top,
+              behavior: 'smooth'
+            });
+          }, 150);
+        }
       }
 
       this.toggleProperty('showBody');

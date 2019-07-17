@@ -21,12 +21,23 @@ export default Component.extend({
   showNext: computed('page', function() {
     return this.page < this.maxPage;
   }),
-  showPrev: computed('page', function() {
-    return this.page > 1;
-  }),
+  // showPrev: computed('page', function() {
+  //   return this.page > 1;
+  // }),
   actions: {
     nextPage() {
+      //cheap way without much calculation
+      console.log(this);
+      const top = document.querySelector(`.more`).offsetTop +
+        document.querySelector(`.posts`).offsetTop;
+      setTimeout(() => {
+        window.scrollTo({
+          top: top,
+          behavior: 'smooth'
+        });
+      }, 150);
       this.set('page', this.get('page') + 1);
+
     } //,
     // prevPage() {
     //   this.set('page', this.get('page') - 1);
