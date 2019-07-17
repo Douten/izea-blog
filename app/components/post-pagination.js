@@ -27,7 +27,6 @@ export default Component.extend({
   actions: {
     nextPage() {
       //cheap way without much calculation
-      console.log(this);
       const top = document.querySelector(`.more`).offsetTop +
         document.querySelector(`.posts`).offsetTop;
       setTimeout(() => {
