@@ -4,7 +4,7 @@
 
 ## features.
 
-- UX (animation, unread/read, scroll on close)
+- UX (animation, unread/read, scrolls)
 - preload images
 - jsonplaceholder
 - lorem-ipsum
